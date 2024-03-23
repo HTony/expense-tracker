@@ -18,7 +18,7 @@ export const login = async (formData: FormData) => {
   }
 
   revalidatePath("/", "layout");
-  redirect("/");
+  redirect("/dashboard");
 };
 
 export const signup = async (formData: FormData) => {
@@ -36,5 +36,5 @@ export const signup = async (formData: FormData) => {
   }
 
   revalidatePath("/", "layout");
-  redirect("/");
+  redirect("/dashboard");
 };

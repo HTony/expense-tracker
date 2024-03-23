@@ -8,7 +8,7 @@ export default async function AuthPage() {
   const { data } = await supabase.auth.getSession();
 
   if (data?.session) {
-    redirect("/");
+    redirect("/dashboard");
   }
 
   return <AuthForm />;
