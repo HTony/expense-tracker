@@ -1,11 +1,21 @@
 import DashboardBanner from "./components/DashboardBanner";
 import DesktopNav from "./components/DesktopNav";
+import { createClient } from "@/utils/supabase/server";
+import { redirect } from "next/navigation";
 
 type DashboardLayoutProps = {
   children: React.ReactNode;
 };
 
-export default function DashboardLayout({ children }: DashboardLayoutProps) {
+export default async function DashboardLayout({
+  children,
+}: DashboardLayoutProps) {
+  const supabase = createClient();
+  const { data } = await supabase.auth.getSession();
+
+  if (!data?.session) {
+    redirect("/");
+  }
   return (
     <main
       id="dashboard-main"
